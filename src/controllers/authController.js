@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
 import mongoConection from '../database/mongo.js';
-import { ObjectId } from 'mongodb';
 import { generateToken } from '../utils/jwt.js';
 
 let dbMongo = await mongoConection();
