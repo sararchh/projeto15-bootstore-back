@@ -30,7 +30,7 @@ export default {
       res.status(404).send({ message: 'Não foi possivel listar os produtos!' })
     }
   },
-  findCart: async (req, res) => {
+  storeCart: async (req, res) => {
     const cart = req.body;
 
     if (!cart) {
