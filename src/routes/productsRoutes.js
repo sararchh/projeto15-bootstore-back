@@ -7,5 +7,6 @@ const productsRouter = express.Router();
 
 productsRouter.post('/products', [checkjwt, validateProduct], productsController?.store);
 productsRouter.get('/products', [checkjwt], productsController?.find);
+productsRouter.post('/productsCart', [checkjwt], productsController?.findCart);
 
 export default productsRouter;

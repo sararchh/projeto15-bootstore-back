@@ -29,5 +29,15 @@ export default {
     } catch (error) {
       res.status(404).send({ message: 'Não foi possivel listar os produtos!' })
     }
+  },
+  findCart: async (req, res) => {
+    const cart = req.body;
+
+    if (!cart) {
+      return res.status(400).send({ message: 'Verifique os dados!' })
+    }
+
+    await dbMongo.collection('cart').insertMany(cart);
+    res.sendStatus(201);
   }
 }
