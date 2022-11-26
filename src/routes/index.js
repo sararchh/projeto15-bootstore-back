@@ -7,4 +7,9 @@ const routes = express.Router();
 routes.use(authRoutes);
 routes.use(productsRoutes);
 
+routes.get('/', (req, res, next) => {
+  return res.status(200).json({ message: "Servidor em operacao" })
+})
+
+
 export default routes;
