@@ -22,6 +22,4 @@ export const checkjwt =  async (req, res, next) => {
         return res.status(401).json({error: "Token Inválido para Realizar Operação"});
     }
 
-    return next();
-
 }

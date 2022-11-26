@@ -31,13 +31,19 @@ export default {
     }
   },
   storeCart: async (req, res) => {
-    const cart = req.body;
+    try {
+      const data = req.body;
+      const { authorization } = req.headers;
 
-    if (!cart) {
-      return res.status(400).send({ message: 'Verifique os dados!' })
+      if (!data) {
+        return res.status(400).send({ message: 'Verifique os dados!' });
+      }
+
+      await dbMongo.collection('cart').insert({ data, tokenUser: authorization });
+      return res.sendStatus(201);
+
+    } catch (error) {
+      return res.sendStatus(400);
     }
-
-    await dbMongo.collection('cart').insertMany(cart);
-    res.sendStatus(201);
   }
 }
